@@ -135,7 +135,7 @@ in
 
   environment.systemPackages = with pkgs; [ 
     git gcc binutils nasm btop fastfetch musikcube tmux
-    qemu
+    qemu oniux
     jetbrains.clion
     chromium brave
     discord easyeffects
