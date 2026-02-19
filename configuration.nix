@@ -55,10 +55,12 @@ in
   users = {
     users.thought = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "lp" "networkmanager" "audio" "pipewire" ];
+      extraGroups = [ "wheel" "lp" "networkmanager" "audio" "pipewire" "vboxusers" ];
     };
     defaultUserShell = pkgs.zsh;
   };
+
+  virtualisation.virtualbox.host.enable = true;
 
   services = {
     pulseaudio.enable = false;
@@ -93,7 +95,6 @@ in
   };
 
   programs = {
-    firefox.enable = true;
     nano.enable = false;
     zsh = {
       enable = true;
@@ -137,14 +138,13 @@ in
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [ 
-    git gcc binutils nasm btop fastfetch musikcube tmux
-    qemu oniux
+    git gcc binutils nasm btop fastfetch musikcube tmux oniux
     jetbrains.clion
-    chromium brave
+    librewolf brave
     discord easyeffects
     prismlauncher javaPackages.compiler.openjdk25
-    libreoffice-fresh
-    kitty waybar wofi dunst hyprpaper hyprshot brightnessctl xfce.thunar adwaita-icon-theme sddm-astronaut krita gnome-calculator
+    libreoffice-fresh krita
+    kitty waybar wofi dunst hyprpaper hyprshot brightnessctl xfce.thunar gnome-calculator wayscriber adwaita-icon-theme sddm-astronaut
     polkit_gnome wl-clipboard wl-clip-persist
   ];
 
@@ -227,10 +227,10 @@ in
         $terminal = kitty
         $fileManager = thunar
         $menu = wofi --show drun
-        $browser = firefox
+        $browser = librewolf
         $bar = waybar
         $calculator = gnome-calculator --mode=keyboard
-        $paint = krita
+        $paint = wayscriber -a
         $network = Throne
         ###AUTOSTART###
         exec-once = hyprpaper & dunst
