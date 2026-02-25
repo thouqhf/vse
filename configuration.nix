@@ -233,8 +233,8 @@ in
         $paint = wayscriber -a
         $network = Throne
         ###AUTOSTART###
-        exec-once = hyprpaper & dunst
-        exec-once = /lib/polkit-gnome/polkit-gnome-authentication-agent-1
+        exec-once = hyprpaper & dunst & easyeffects
+        exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
         exec-once = wl-clipboard-history -t
         exec-once = wl-paste --watch cliphist store
         exec-once = wl-clip-persist --clipboard regular --display wayland-1
@@ -488,7 +488,6 @@ in
               "car": "",
               "default": ["", "", ""]
             },
-            "on-click": "pavucontrol",
             "on-click-right": "blueman-manager"
           },
           "network": {
@@ -518,7 +517,7 @@ in
           },
           "clock": {
             "tooltip-format": "<tt><small>{calendar}</small></tt>",
-            "format-alt": "{:%a %d %B %Y}"
+            "format-alt": "{:%a %d %b %Y}"
           }
         }
       '';
@@ -632,8 +631,8 @@ in
           font = JetBrains Mono 10
           line-height = 0
           markup = full
-          format = "<b>%a</b>\n<i>%s</i>\n%b"
-          alignment = center
+          format = "<b>%a</b>\n%s\n%b"
+          alignment = left
           vertical_alignment = center
           show_age_threshold = -1
           word_wrap = no
@@ -644,8 +643,6 @@ in
           show_indicators = no 
           icon_position = off
           history_length = 20 
-          dmenu = /usr/bin/dmenu -p dunst:
-          browser = /usr/bin/firefox -new-tab
           always_run_script = true
           title = Dunst
           class = Dunst
@@ -654,11 +651,7 @@ in
           corner_radius = 9
           ignore_dbusclose = false
           mouse_left_click = close_current
-          mouse_middle_click = do_action
           mouse_right_click = do_action
-        [shortcuts]
-          close = ctrl+space
-          close_all = ctrl+shift+space
         [urgency_normal]
           background = "#272727"
           foreground = "#ffffff"
