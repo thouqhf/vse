@@ -233,7 +233,7 @@ in
         $paint = wayscriber -a
         $network = Throne
         ###AUTOSTART###
-        exec-once = hyprpaper & dunst & easyeffects
+        exec-once = hyprpaper & dunst
         exec-once = ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
         exec-once = wl-clipboard-history -t
         exec-once = wl-paste --watch cliphist store
